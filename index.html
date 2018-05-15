@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>News app</title>
+  </head>
+  <body>
+    <div id="target"></div>
+    <script id="template" type="text/ractive">
+    	<label>
+    	  Search for news titles here...
+    	  <input value="{{search}}">
+    	</label>
+    	<p>{{search}}</p>
+      {{#if visible === 1 }}
+      <button on-click="['show', 2]" fade-in>Search!</button>
+      {{elseif visible === 2 }}
+      <button on-click="['show', 2]" slide-in>Search again!!</button>
+      {{/if}}
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>
