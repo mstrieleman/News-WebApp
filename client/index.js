@@ -1,4 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
+import Search from './search'
 
-render(<p>:)</p>, document.querySelector('#app'))
+render(<Search/>, document.querySelector('#app'))
