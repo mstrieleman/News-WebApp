@@ -9,23 +9,22 @@ export default class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
-
-  componentDidMount() {
-      /// TODO: if (error) return console.warn(`ERROR(${error.code}): ${error.message}`);
-  }
+/// TODO: if (error) return console.warn(`ERROR(${error.code}): ${error.message}`);
 
   handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const searchText = formData.get('search')
-    const request = `https://services.cnn.com/newsgraph/search/headline:${searchText}/section:/language:en/rows:10/start:0/lastPublishDate,desc?api_key=TEST`
+    const temporaryRequest = 'https://jsonplaceholder.typicode.com/posts/1'
+    //const request = `https://services.cnn.com/newsgraph/search/headline:${searchText}/section:/language:en/rows:10/start:0/lastPublishDate,desc?api_key=TEST`
     //not approved for api yet - fetch wont work until that happens
-    fetch(request)
+    fetch(temporaryRequest)
       .then(data => {
+        console.log(data);
         return data.json()
       })
       .then(data => {
+        console.log(data);
         this.setState({
           //temporary
           news: data
