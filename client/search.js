@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// require('dotenv').config({ path: 'C:\Users\Mike\eleven\News-web-app\.env' });
+
 
 export default class Search extends Component {
   constructor(props) {

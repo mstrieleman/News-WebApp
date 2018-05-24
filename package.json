@@ -23,6 +23,7 @@
   "homepage": "https://github.com/mstrieleman/News-web-app#readme",
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "dotenv": "^5.0.1",
     "watchify": "^3.11.0"
   },
   "dependencies": {
