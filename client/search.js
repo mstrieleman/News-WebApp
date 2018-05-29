@@ -69,6 +69,7 @@ export default class Search extends Component {
           <ul>{newsTitles}</ul>
         </main>
         <footer className="mastfoot mt-auto" />
+        <a href="https://newsapi.org/">Powered by News API</a>
       </div>
     );
   }
