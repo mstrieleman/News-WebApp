@@ -35,7 +35,6 @@ export default class Search extends Component {
   }
 
   render() {
-    console.log(this.state.news);
     const newsTitles = this.state.news.map(element => {
       return (
         <div key={element.title}>
