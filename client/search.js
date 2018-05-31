@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// const dotenv = require('dotenv').config()
-const API = 'beb27522e5274d76b336ab8d88ebf31f';
+const dotenv = require('dotenv').config()
 
 export default class Search extends Component {
   constructor(props) {
