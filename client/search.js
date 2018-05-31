@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
-const dotenv = require('dotenv').config()
+// const dotenv = require('dotenv').config()
+const API = 'beb27522e5274d76b336ab8d88ebf31f';
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      news: []
+      news: [],
+      breaking: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.newsType = this.newsType.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const search = formData.get('search');
-    const url = 'https://newsapi.org/v2/everything?' +
-          `q=${search}&` +
-          'from=2018-05-29&' +
-          'sortBy=popularity&' +
-          `apiKey=${API}`;
+    let newsType = '';
+    if (this.state.breaking === true) {
+      newsType = 'everything?';
+    }
+    else {
+      newsType = 'top-headlines?';
+    }
+    let url = 'https://newsapi.org/v2/' +
+        `${newsType}` +
+        `q=${search}&` +
+        'from=2018-05-29&' +
+        'sortBy=popularity&' +
+        `apiKey=${API}`;
+
+    console.log(this.state.breaking);
+    console.log(newsType);
 
     fetch(url)
       .then(response => {
@@ -33,6 +47,19 @@ export default class Search extends Component {
         console.error(error);
       });
   }
+
+  newsType() {
+    if (this.state.breaking === true) {
+      this.setState({
+        breaking: false
+      });
+    }
+    else if (this.state.breaking === false) {
+      this.setState({
+        breaking: true
+      });
+    };
+  };
 
   render() {
     const newsTitles = this.state.news.map(element => {
@@ -69,8 +96,13 @@ export default class Search extends Component {
                     Go
                   </button>
                 </div>
+                <div>
+                </div>
               </form>
             </nav>
+            <div className="flex-column">
+              <p className="mt-2 text-center"><input type="checkbox" className="mr-2" onClick={this.newsType}/>Breaking news only</p>
+            </div>
           </div>
         </header>
         <main role="main" className="inner cover mt-3">
